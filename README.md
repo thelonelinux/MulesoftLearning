@@ -159,6 +159,42 @@
       * To know this response http status code meaning visit the website
       * https://http.cat/
     * Note - No two resources can have same name and method.
+* START WITH API DESIGNING IN THE ANYPOINT PLATFORM
+  * Open Anypoint Ide on web browser : Goto : www.anypoint.mulesoft.com
+  * click on Design Center (Start Designing)
+  * New page opens up, Here click on Create+ button and chose New API Specification
+  * Give the project name.
+  * You can there select language option either RAML or OAS, for now just chose RAML1.0 and click on create API.
+  * So right now we are not developing an API, But we are in designing phase.
+* DESIGNING AN API (Coding Part)
+  * Using # we can comment in the ide.
+  * So first we give our Resource name as "/getAccountSummary:", Also whenever you create enter, you will see it will give you option to chose PUT, DELETE, GET etc.
+  * so this is like autocomplete as we have in usual Jetbrains ide. Also when writing this code you can see on right subwindow you will get for what you have made like output things.
+  * ==BELOW IS THE CODE PART===
+    * #%RAML 1.0
+      title: my-first-api
+      /getAccountSummary:
+        description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details here"
+          get:
+            queryParameters:
+              accountNumber:
+              type: number
+            responses:
+              200:
+                body:
+                  application/json:
+                    example:
+                      {
+                        "BankAccountNumber" : 1345,
+                        "Name" : "Vicky",
+                        "Country" : "India"
+                      }
+    * So once you prepare this /getAccountSummary GET Api, you can try on run on the right hand side. Just pass the account number input (Any Random number)
+    * It will give output as the detail mentioned above for any number. 
+    * So this is how it works.
+    * For further practise, you can add code in somewhere else or download. Instead of writing here everytime.
+    * Now mostly learn by coding, and add comments learn in code only
+
 * CREATING API SPEC USING RAML
 * BASICS OF RAML - Resource/Method/Request/Response/Mocking
 * PUBLISH TO EXCHANGE
