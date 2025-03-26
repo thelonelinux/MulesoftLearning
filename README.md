@@ -166,7 +166,7 @@
   * Give the project name.
   * You can there select language option either RAML or OAS, for now just chose RAML1.0 and click on create API.
   * So right now we are not developing an API, But we are in designing phase.
-* DESIGNING AN API (Coding Part)
+* DESIGNING AN API (Coding Part) (CREATING API SPEC USING RAML)
   * Using # we can comment in the ide.
   * So first we give our Resource name as "/getAccountSummary:", Also whenever you create enter, you will see it will give you option to chose PUT, DELETE, GET etc.
   * so this is like autocomplete as we have in usual Jetbrains ide. Also when writing this code you can see on right subwindow you will get for what you have made like output things.
@@ -194,17 +194,27 @@
     * So this is how it works.
     * For further practise, you can add code in somewhere else or download. Instead of writing here everytime.
     * Now mostly learn by coding, and add comments learn in code only
+    * IMP - In the Design, There just click on console on Documentation and then on summary to see all the APIs to check and run and try in console there.
+    * PUBLISH TO EXCHANGE
+      * Once you created this, you can click on publish right top button, then it will publish in the "Exchange".
+      * One in Exchange and then you can use this API from there as well. All your created API you can store there.
+      * So in Exchange, a consumer/customer will go and use this APIs without going in deep dive of that API. So this is the use of Exchange.
 
-* CREATING API SPEC USING RAML
 * BASICS OF RAML - Resource/Method/Request/Response/Mocking
-* PUBLISH TO EXCHANGE
 * help.mulesoft.com
 --
 
 
-### VIDEO 4
+### VIDEO 4 - 52 mins (RAML and Publish to Exchange in Mulesoft) (https://www.youtube.com/watch?v=2Hom4_8IYq4&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=4&ab_channel=SalesforceApexHours)
 * API Designing Plus Resource Types and Trait, For reusable methods
 * RAML Json type prepared
+#### AGENDA 
+* RECAP OF PREVIOUS SESSION
+* RAML CONTINUE...
+* USING !include, type, types, Resource Types vs Traits, small validations, etc
+* HOW TO USE MOCK URL?
+* PUBLISH TO EXCHANGE
+* raml.org
 --
 
 
