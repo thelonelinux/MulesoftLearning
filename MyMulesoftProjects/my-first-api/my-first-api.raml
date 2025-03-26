@@ -1,0 +1,50 @@
+#%RAML 1.0
+title: my-first-api
+
+#GET API
+/getAccountSummary:
+  description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details here"
+  get:
+    queryParameters:
+      accountNumber:
+        type: number
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+              "BankAccountNumber" : 1345,
+              "Name" : "Vicky",
+              "Country" : "India"
+            }
+
+# POST API
+/createAccounts:
+  description: "To create a new account"
+  post:
+    queryParameters:
+      branch: string
+    body:
+      application/json:
+        example:
+          {
+            "name" : "vicky",
+            "DOB" : "21-01-2000"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Account created"
+              }
+
+
+
+
+
+
+
+      

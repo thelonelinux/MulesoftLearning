@@ -1,0 +1,10 @@
+{
+  "main": "my-first-api.raml",
+  "name": "my-first-api",
+  "groupId": "da85685b-687f-4ddf-9028-426675c955d1",
+  "assetId": "my-first-api",
+  "version": "1.0.0",
+  "classifier": "raml",
+  "tags": [],
+  "descriptorVersion": "1.0.0"
+}
