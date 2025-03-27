@@ -1,0 +1,37 @@
+#%RAML 1.0
+title: resourceTypes
+
+# -------------------------Resource Types with Example ----------------
+# This is resourcetypes, Write code at one place and can be reused
+resourceTypes:
+  healthcheck:
+        get: 
+          description: Get <<resourcePathName | !uppercase>>   # this will give api name where it is going to be used in UpperCase.
+          responses:
+            200: 
+              body:
+                  application/json:
+                      example:
+                          {
+                            time: "8:32 am",
+                            health: "ok"
+                          }
+  sarvan:
+        get:
+
+# HERE we see how to use the resource types in our APIs
+/health:
+  type:
+    healthcheck
+
+# This is one more API where we are using resourceType
+/oneMoreHealthCheck:
+  type:
+    healthcheck     
+
+# Using of other resource type, as we can create multiple in same
+/oneMoreSarvanHealthResource:
+  type:
+    sarvan
+
+# -------------------------------------------------------------
