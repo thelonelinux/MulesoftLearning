@@ -287,7 +287,7 @@
     * resourceTypes;
         healthCheck
           get;
-            description: Get <<resourcePathName | uppercas>>   # this will give api name where it is going to be used in UpperCase.
+            description: Get <<resourcePathName | !uppercase>>   # this will give api name where it is going to be used in UpperCase.
             responses;
               200:
                 body:
@@ -299,7 +299,8 @@
                     }
   * Now this code will be reused as
     * /health:
-        type: healthcheck
+        type: 
+          healthcheck
   * So now when you go and check this API name in console, you will see it will be in Upper case as "get HEALTH".
   * So for any kind of description, you can make use of this angular braces.
   * You can deep dive this topic in raml.org
@@ -310,7 +311,7 @@
     * resourceTypes:
         healthCheck 
           get:
-            description: Get <<resourcePathName luppercase>> #this will give api name where it is going to be used in UpperCase.
+            description: Get <<resourcePathName | !uppercase>> #this will give api name where it is going to be used in UpperCase.
             responses:
               200: 
                 body:
@@ -365,9 +366,20 @@
   * So this is how we make use of Traits.
   * Also we can make use of other like Body instead of queryParameters and other items. You can explore this yourself.
   * This similar trait you can also add in the /createAccount and use it other APIs as well.
+  * After here mostly learn via code only. By watching videos.
+  * Purpose of doing this resourceType and Traits : to identify repeated stuffs and eliminate it using this.
 
+* DEFINING SCHEMA USING DATA TYPES (HANDS ON WITH CODE)
+  * JSON object, which is key value pair.
+  * { "key" : "value" }   (this is a JSON object or say object)
+  * JSON Array is anything which is closed in [] brackets
+  * { "key" : "value" , array : ["1" , "2", "3"] }  (As array example in json object)
+  * In www.jsonlint.com
+    * Here you can go and write json objects
+  * So here we are just learning to define our JSON Schema, how it should be and it's properties data types.
+  * See in video, just defining in new file.
 
-* USING linclude, type, types, Resource types Vs Traits, smal validations, etc
+* USING !include, type, types, Resource types Vs Traits, small validations, etc
 * HOW TO USE MOCK URL?
 * PUBLISH TO EXCHANGE
 * raml.org
