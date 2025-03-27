@@ -208,15 +208,170 @@
 ### VIDEO 4 - 52 mins (RAML and Publish to Exchange in Mulesoft) (https://www.youtube.com/watch?v=2Hom4_8IYq4&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=4&ab_channel=SalesforceApexHours)
 * API Designing Plus Resource Types and Trait, For reusable methods
 * RAML Json type prepared
-#### AGENDA 
+#### AGENDA
 * RECAP OF PREVIOUS SESSION
-* RAML CONTINUE...
-* USING !include, type, types, Resource Types vs Traits, small validations, etc
+  * API Specification
+  * Design Center
+  * Creating an API Spec using RAML
+  * Resource, Request, Respionsem Statuscides etc.
+  * Publish to exchange
+  
+* RAML CONTINUE..
+  * When and How to use ResourceTypes?
+  * "resourceTypes" refers to a way to define reusable templates or blueprints for different types of resources in your API.
+    * Some common functionality which we can use again, So this is some kind of reusability functionality.
+    * We will see more in the code
+  * It is like set of instructions that you can use to create consistent and standardised resouce definitions.
+  * Used for Best practise to avoid writing code again and again.
+  * The resourceTypes uses some user-defined parameters surrounded by double angle brackets (<< and »)
+  * <<resourcePath» - represent the entire URI (not URL - with the host is called URL)
+  * <<resourcePathName» - represents the part of URI (the oath of the URI following the right most forward slash)
+  * There are some parameter functions you can use in resource types for example:
+    * !singularize
+    * !pluralize
+    * !uppercase
+    * !lowercase
+    * !uppercamelcase
+    * !lowercamelcase
+    * !upperunderscorecase
+    * !lowerunderscorecase
+    * !upperhyphencase
+    * !lowerhyphencase
+  * for example, given the resource /health, where «resourcePathName», evaluates to "health"
+    * «‹resoursePathName | Suppercase» ==> "HEALTH" (it will make all in caps letter).
+* IN CODE NoW
+  * Assume we are developing 10 different APIs. In all apis we have standard to follow for health check
+  * Code API for health check
+    * /healthCheck 
+        get:
+          responses:
+            200: 
+              body:
+                application/json;
+                  example:
+                  {
+                    time: "8;32 am" ,
+                    health: "ok"
+                  }
+  * But in code we don't want this code to be written in all the APIs to first check the health in there API everytime.
+  * Same line of code in 10 different APIs.
+  * So we better define this as resourcetype
+  * So Code as
+    resourceTypes:
+      healthcheck
+        get: 
+          responses:
+            200: 
+              body:
+                  application/json:
+                      example:
+                          {
+                            time: "8:32 am",
+                            health: "ok"
+                          }
+  * Now we will see about how to use this resourceType in our API
+  * Now we have made this "healthCheck" resource type, And now we will use this code.
+  * So Code to use it
+    * /health:
+         type:
+           healthCheck
+  * So now here it will reuse the "healthCheck" resource type in /health api.
+  * So now using this in second API as
+    * /oneMoreHealth:
+        type:
+          healthCheck
+  * So this way we have used our resource type in two places as in example above.
+* CODE WITH HOW ANGULAR BRACKETS ARE USED
+  * Note : indentation also plays a good role in how this code is or else it will give error.
+  * So code as (Here we just added the description)
+    * resourceTypes;
+        healthCheck
+          get;
+            description: Get <<resourcePathName | uppercas>>   # this will give api name where it is going to be used in UpperCase.
+            responses;
+              200:
+                body:
+                  application/ json;
+                    example:
+                    { 
+                      time: "8:32 am",
+                      health: "ok"
+                    }
+  * Now this code will be reused as
+    * /health:
+        type: healthcheck
+  * So now when you go and check this API name in console, you will see it will be in Upper case as "get HEALTH".
+  * So for any kind of description, you can make use of this angular braces.
+  * You can deep dive this topic in raml.org
+  * so this is just kind of reusing things.
+
+* IN CODE DEFINING MULTIPLE RESOURCE TYPES IN SAME
+  * Here in this below code we have two resourceTypes in same. healthCheck and sravan
+    * resourceTypes:
+        healthCheck 
+          get:
+            description: Get <<resourcePathName luppercase>> #this will give api name where it is going to be used in UpperCase.
+            responses:
+              200: 
+                body:
+                  application/json:
+                    example;
+                      {
+                        time:"8:32 am" health: "ok"
+                      }
+        sravan 
+          get:
+  * Now how to use this as below 
+    * /onemoreHealth:
+        type:
+          sravan
+  * So this is how you can define more than one resourceTypes
+
+* TRAITS ( WHEN AND HOW TO USE TRAITS?)
+  * "traits" are a kind of resourceTypes
+  * Understand this way: resourceTypes are used to extract pattern from "resource" definitions (resource level),
+  * Whereas, traits are used to extract patterns from "method" definitions that are common across resources.
+  * In simpler tems, traits are defined to use whenever there is a common functionality needs to be implemented across more than one method at-le
+  * CODE LEARNING of TRAITS - Using traits, we will make internal call to put username and password and use this in our /getAccountSummary so that
+  * This time we also have to pass username and password to getAccountSummary details.
+  * CODE
+    * traits:
+        typeOfVerification: 
+          queryparameters:
+            username : string 
+            password : string
+  * Here we have to use "is" keyword to add this Trait in our API /getAccountSummary
+    * #GET API
+        /getAccountSummary:
+        description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details 
+        get:
+          queryParameters: 
+            accountNumber:
+              type: number
+            is:
+              - typeOfVerification 
+            responses:
+            200: 
+              body: 
+                application/json:
+                  example;
+                    {
+                      "BankAccountNumber" : 1345,
+                      "Name" : "Vicky",
+                      "Country" : " India"
+                    }
+  * So now after adding this code, we also have to add username and password along with the accountNumber to call /getAccountSummary API.
+  * So this is like adding the extra queryParameters 11ke Traits.
+  * So this is how we make use of Traits.
+  * Also we can make use of other like Body instead of queryParameters and other items. You can explore this yourself.
+  * This similar trait you can also add in the /createAccount and use it other APIs as well.
+
+
+* USING linclude, type, types, Resource types Vs Traits, smal validations, etc
 * HOW TO USE MOCK URL?
 * PUBLISH TO EXCHANGE
 * raml.org
---
-
+  
 
 
 
