@@ -136,7 +136,7 @@
 --
 
 ### VIDEO 3 - 40 mins (Designing APIs Using Mulesoft Part 1 - Basics of RAML) (https://www.youtube.com/watch?v=jWGHFI7i7Sw&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=3&ab_channel=SalesforceApexHours)
-* API Designing steps in mulesoft Anypoint IDE
+* API Designing steps in mulesoft Anypoint Web IDE
 #### AGENDA
 * RECAP OF PREVIOUS SESSION
 * WHAT IS AN API SPECIFICATION?
@@ -204,10 +204,8 @@
 * help.mulesoft.com
 --
 
-
 ### VIDEO 4 - 52 mins (RAML and Publish to Exchange in Mulesoft) (https://www.youtube.com/watch?v=2Hom4_8IYq4&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=4&ab_channel=SalesforceApexHours)
-* API Designing Plus Resource Types and Trait, For reusable methods
-* RAML Json type prepared
+
 #### AGENDA
 * RECAP OF PREVIOUS SESSION
   * API Specification
@@ -215,6 +213,8 @@
   * Creating an API Spec using RAML
   * Resource, Request, Respionsem Statuscides etc.
   * Publish to exchange
+* API Designing Plus Resource Types and Trait, For reusable methods
+* RAML Json type prepared
   
 * RAML CONTINUE..
   * When and How to use ResourceTypes?
@@ -381,13 +381,26 @@
 
 * USING !include, type, types, Resource types Vs Traits, small validations, etc
   * See in video for use of !include
+  * Creating JSON type object item in our code.
+    * Create a new file in anypoint website. 
+    * API Format : RAML 1.0
+    * File type chose : Data Type
+    * File name : yourFileName.raml
+    * And then click create
+  * So we are just doing this to create a data schema in json type.
+  * Here we learn use of !include and how to create example json and use in our api for response. 
+  * We create response - JSON class. And example of JSON object.
+  * And how to use this as response we use in api
+  * We also added constraints like min max when creating JSON class. So this is how it works. 
+  * When creating the example select filetype as example.
+  
 * HOW TO USE MOCK URL?
 * PUBLISH TO EXCHANGE
 * raml.org
 
-## Video 5 Learning (Developing APIS - Part 1 - MULE 2 - MESSAGE STRUCTURE and Anypoint studio)
+## Video 5 Learning (Developing APIS - Part 1 - MULE 2 - MESSAGE STRUCTURE and Anypoint studio) (https://www.youtube.com/watch?v=HG2mdaw1_Ak&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=5&ab_channel=SalesforceApexHours)
 * NO NEED TO WRITE DEVELOPMENT
-  * ANYPOINT STUDIO
+  * ANYPOINT STUDIO IDE Download
   * From previous - code for json check and write
 ### AGENDA
 #### 1. Developing APIs
@@ -410,7 +423,7 @@
     * Error Information: In case any error occurs in the application, an error object is produced which contains all the information related to the error.
 * ANYPOINT STUDIO TOOL TO RUN CODE (SEE BELOW)
 
-#### 3.Anypoint Studio
+#### 3.Anypoint Studio (Download and install and get started with the IDE)
 * CODE PART
   * Layout of your IDE.
   * It looks similar like our SSIS. But different from that of Web Mulesoft
@@ -527,7 +540,7 @@
 * We will learn about this in next video class.
 
 
-## Video 6 Learning (Debugging application in Anypoint Studio)
+## Video 6 Learning (Debugging application in Anypoint Studio) (https://www.youtube.com/watch?v=rebYIty04mI&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=6&ab_channel=SalesforceApexHours)
 ### AGENDA
 #### 1. Debugging application in Anypoint Studio - Hands-on
 

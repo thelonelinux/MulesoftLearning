@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+# This is comment code 
+# Here we define JSON Schema for our Account - Simply make JSON data type
+# Like creating object in java, here we create JSON schema like class in java
+
+# whenever a object starts with curly braces. then they are json object.
+
+type: object
+properties:
+  accountNumber : number 
+  address : array
+  items:
+    properties:
+      "type" : string  #In the console side you can see all these items are required # So how to make some items not-required or nullable
+      city ? : string # We can put a ? mark, so that it will nullable or not required . So now city is optional
+      "country" : string
+
+
+
