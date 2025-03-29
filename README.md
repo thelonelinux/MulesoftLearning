@@ -380,12 +380,226 @@
   * See in video, just defining in new file.
 
 * USING !include, type, types, Resource types Vs Traits, small validations, etc
+  * See in video for use of !include
 * HOW TO USE MOCK URL?
 * PUBLISH TO EXCHANGE
 * raml.org
+
+## Video 5 Learning (Developing APIS - Part 1 - MULE 2 - MESSAGE STRUCTURE and Anypoint studio)
+* NO NEED TO WRITE DEVELOPMENT
+  * ANYPOINT STUDIO
+  * From previous - code for json check and write
+### AGENDA
+#### 1. Developing APIs
+#### 2. Mule 4 Message Structure
+* MESSAGE STRUCTURE
+  * Mule Event
+    * Mule Message (PayLoad + Attributes)
+    * Variables
+    * Error Information
+  * Mule Event = Mule Message + Variables + (Error Information) 
+  * Mule Message = Payload + Attributes 
+  * In Simple terms :
+    * A Mule 4 messge is like an envelope that contains a letter (payload), some informatin on the outside (attributes), 
+      * sticky notes (variables) you can attach, and a place to write down any problems that might occur (error information). 
+      * All of these components work together to help you process and manage data in your Mle 4 application.
+  * Mule Event & Message Structure
+    * Payload : It's the actual message content. Payload can be over ridden.
+    * Attributes: These provides metadata information such as queryParams, urParams, file size etc. These are immutable (cannot be changed)
+    * Variables: These are which you can store some kind of data or information and can be used across the application as long as you connect the flows the flow-ref.
+    * Error Information: In case any error occurs in the application, an error object is produced which contains all the information related to the error.
+* ANYPOINT STUDIO TOOL TO RUN CODE (SEE BELOW)
+
+#### 3.Anypoint Studio
+* CODE PART
+  * Layout of your IDE.
+  * It looks similar like our SSIS. But different from that of Web Mulesoft
+* DOWNLOAD AND INSTALL ANYPOINT SUTDIO (See in video only)
+  * It comes with inbuilt maven and java
+* CREATE A NEW PROJECT
+  * Step see in video only
+* CONNECTORS - Here tool or mule pallets which we drag and drop are called as connectors
+* FOR GK -
+  * If you want to reset views then in anypoint studio, go in widow » perspective » reset perspective
+
+#### 4. MuleSoft Project Structure
+* MULE PROJECT STRUCTURE
+  * Every Project in Mule 4 is Mavenized Project (pom. xmi)
+  * All Mule xml's are placed under src/main/mule
+  * Other files can be placed under : src/main/resources or src/test/resources
+  * mule-artifact.json (We will discuss more about it later)
+  * Each Mule app xml has
+    * Message flow (Graphical View)
+      * This is main part where you drag and drop your tool / mule pallets like in ssis.
+        * when you open the src/main/mule app.xml there you make this project drag drop in this section.
+    * Global elements (contains all config details)
+      * Here you create global variable, DB connection details. Similarly you know you had in sSIS.
+    * configuration xml (xml version of graphical view)
+      * So here in Message Flow tab whatever tool/mule pallets you drag and drop, it is converted into its xmi in configuration xml.
+        * These things you can see in IDE code plane bottom only. If you open src/main/mule app-ml file, there it is.
+    * More details see in code always. in video
+
+#### 5. Flow, Sub Flow & Private flow
+* FLOW, SUB-FLOW AND PRIVATE FLOW (This is like same arrow flow you did in ssis)
+  * An App can consists of a single flow !
+  * Or it can break up processing into discrete (private) flows and sub flows that you add to the app and connect together.
+  * Private and sub-flows can be triggered by Flow-reference or by DataWeave lookup! (We will look more about this in code on hands on)
+* FLOW
+  * A flow has "Source" , "Process" and "Error Handling" Part
+  * You should definitely keep something in Source
+  * Image you can see in YT. It contains all those three parts mentioned.
+* PRIVATE FLOW
+  * A private flow has "Source", "Process" and "Error Handling" Part
+  * It's called a private flow when we don't keep anything in Source Part
+* How to use this flow in our project.
+  * Open src/main/mule app-xml
+  * Go in Mule Pallete (Tools), Search for flow
+  * You will get there options for Flow and Sub Flow, but not private flow
+  * Private flow are self attributed by developer.
+  * So now drag and drop flow, there you will see we have source, process and error handling.
+  * Since our is RESTApi which used HTTP protocol,
+  * We will add listener in our Source, So that we will know which is calling our API, as you know.
+  * Check in video only for about how it is dragging and dropping, Good explained.
+  * So if we remove listener from source, then our flow will be called as private flow, as now we don't have anyone to listen our https, so this is what we call private flow.
+  * So all this tools you are adding from mule pallete are called CONNECTORS. This connector you are adding in either source or process or error handling section of the flow.
+
+#### 6.Connectors
+* You have already seen some connectors (tools) which we drag and drop from above part
+* There are thousands of connectors in mulesoft
+* Remember like SSIS, here also we are not writing any code, We are just dragging and dropping the connector/tools and doing our configuration and job task.
+* So now we will start with our API DEVELOPMENT
+  * We will start with HTTP Listener connector/tool, see below part now.
+
+#### 7. Http Listener, Set Payload connectors
+* HTTP Listener (Connector/tool)
+  * Listens to the request which client/user sends.
+  * Mandatory Config Details required: host, port, path
+  * Default: Accepts all kind of Methods if nothing is specified. Method like verb etc.
   
+* Set Payload (Connector/tool)
+  * The Set Payload component lets you update the payload of the message.
+  * The payload can be a literal string or a Dataleave expression
+  * Mandatory config Details Required :
+    * value eg:
+      * #["Hello World"] or #[payload]    or #[attributes.queryParams.name]
+  * Default: #[payload]
+  
+* Hands on with code
+  * HTTP Listener
+  * Set PayLoad
+  * Building Simple Rest Application
+  * Debugging an application
+
+* See in next part for hands on
+
+#### 8. Building a simple REST API - Hands-on
+* STEPS
+  * Drag and drop a flow
+  * Add (Drag and drop) HTTP Listener connector in Source
+  * Add (drag and drop) Set Payload connector in process
+  * Double click on the HTTP Listener to do the configuration in it.
+    * In the General Tab
+      * Make Display name as you wish
+      * Other host details you can add and test connection. See video only and do when practising code.
+  * It's all about click, drag, drop, configure, so just check video and develop a simple REST API.
+   
+* To run the project. right click on the project canvas plane, and then click on Run Project "projectName",
+  * So now in console you can see project is running,
+  * In the console when you see the status is Deployed, means you project has successfully run.
+  * Now open the browser. Whaterver you configured in host just search that port
+    * http://localhost:8080/test
+* To stop the application, click on stop red button in ide only
+
+* Deploying
+  * Deploying via web browser mulesoft only
+  * Click on Runtime manager.
+    * (However for now sir is just showing it to us. but in future we will go deep dive in deplopyment)
+  * Chose Design environment (Not sandbox)
+  * Click on Deploy Application
+  * Before deploying, first stop the application from Anydesk studio
+  * Some other step check in video only. we will see in detail in later videos for deployment. So that's it.
+* Jar file deploy in sandbox, just check video for step. but later do more.
+  * Jar file you can get from your app project. Right click and see the steps.
+  * You can also open in your browser as he has deployed in cloud sandbox.
+  * So this is all about it.
+
+#### 9. Debugging application in Anypoint Studio - Hands-on
+* We will learn about this in next video class.
 
 
+## Video 6 Learning (Debugging application in Anypoint Studio)
+### AGENDA
+#### 1. Debugging application in Anypoint Studio - Hands-on
+
+#### 2. Flow - Reference - Hands-On
+* Flow Reference (Connector)
+  * As we discussed in our previous class, we have normal, private flow and sub-flow.
+  * So to connect these private flows and sub-flows we need Flow-reference connector.
+  * Use to call a sub-flow/private flow.
+  * Mandatory Config Details required: flow name to be called. All names are present in drop-down list.
+  * Default: empty but it fails to deploy if you don't give any flow name from drop down.
+* Hands-on
+  * Watch video - To connect flow with private flow.
+  * Also download postman - for testing our APIS
+  * To check the flow how request is being processed step by step we need debugging
+* Debugging
+  * This time instead of run the project, choose debug the project,
+  * See video on how to do debugging.
+  * You can also set debug configuration, in menu of run » Debug configuration
+  * So run the api in postman, you will see the breakpoint will get hit,
+  * During debug we can see in Mule Debugger, it contains
+* Attributes
+  * This contains meta data, you can check here during debugging.
+  * example like listener path, method, requestPath etc.
+  * You can get attribute details with #[attribute.requestPath] or #[attribute headers] when debugging by click on evaluate.
+  * Check in video about how it is doing evaluate and getting attributes values. host values ete.
+  * Use attribute name with case sensitive only.
+  * {# and [] } are automatically added in evaluate even you don't add it. You can just write attribute.requestPath
+  * So this is all about flow-reference, debug and attributes.
+  * Now checking with variables. (See in next part below)
+
+#### 3. Attributes and Variables
+* Attributes
+  * We know that attributes is part of Mule Message
+  * Attributes are nothing but the meta-data coming from the system which we are connecting.
+  * Accessed as #[attributes.requestPath]
+    #[attributes.queryParams.name]
+  * Attributes are replaced with new or no values whenever we connect to any external systems.
+* Variables (Lies in Mule Event Hierarchy only)
+  * Mule 4 has only one kind of variable called "variable" whereas in Mule 3 we used to have 3 kinds of variables (flow, session and record) - Now deprecated.
+  * They are used to preserve information which you think might be useful to any point of flow.
+  * Accesses as #[vars.id]
+  * IMP - Vars are carried as long as the flow is connected. If you think that you no longer need the variable, you can use "remove variable" to remove it.
+* Hands-on Variables
+  * Search Set Variable tool from mule palette. and drag and drop and put in. Check in video.
+  * You can give id and value for this Set variable mule palette.
+  * Mostly you have to do here is see video and do code practise only more to understand.
+  * Further check in below part
+
+#### 4. SET VARIABLE and Attributes - Hands-On
+* Set Variable (Connector/tool)
+  * Here also after adding Set variable and doing debug and check in evaluate to check your variable value attributes.
+  * Also you can see here that wars are carried as long as connector are connected.
+  * You can add as many as Set Variable connector in your app.
+  * Now we will check with logger component/connector in next part, see below
+
+#### 5. LOGGER
+* Logger (Connector/Tool)
+  * Log the information for tracking purpose, Logs appear in the console.
+  * Mandatory Config Details required:
+    * Nothing is mandatory here. You can set anything in "message" field.
+* Hands-on
+  * Anything you see in console. when running or debugging the code. those are loggers only.
+  * So last time we set apple value in our Set Variable.
+    * So how to know what is this value is. We can do this by the use of logger.
+  * So search for "logger" tool in the mule pallete. Drag and drop and do the configuration
+  * Code it and practise and see in video you know how to do.
+  * You can add as much as logger as you want to log after every tools you want to log
+  * We will also check how to pass queryParameters in this project
+
+* So for now our next concept "Scope of Attributes, Payload and variable" logger can help us to understand the scopes. Check in next part below
+
+#### 6. SCOPE OF ATTRIBUTES, PAYLOAD AND VARIABLES - Hands-On
 
 
 
