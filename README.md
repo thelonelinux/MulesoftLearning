@@ -663,9 +663,95 @@
   * So this way we reduce hardcoding.
   * add this test.properties file attach with your tool canvas from Global Elements, Create Configuration. Select Configuratoin Properties, upload your test.properties file.
   * Now you can make use of your properties file in coding. see video for more.
+  * In Properties code as : 
+    * http.port : 8484
+    * message : Apex Hours
+  * In Transform Message connector code as 
+    * output application/json
+    * ---
+    * {
+    * "value using dollar " : '${message}',
+    * "value using p " : p('message')
+    * }
 
-##### 3. DATAWEAVE 2.0 INTRODUCTION
-##### 4. DATAWEAVE - THE POWER PF PREVIEW AND ONLINE DATAWEAVE PLAYGROUND FEATURE
+##### 3. DATAWEAVE 2.0 INTRODUCTION (Both in same)
+##### 4. DATAWEAVE - THE POWER PF PREVIEW AND ONLINE DATAWEAVE PLAYGROUND FEATURE (Both in same)
+* Dataweave - the power of preview feature
+  * Dataweave : Transform some data from database
+  * Are you not sure the syntax you want to write?
+  * Are you struggling to deploy your application always, to check whther your syntax or DW is correct or not?
+  * DataWeave Preview & Playground helps us to overcome it!
+  * Please make sure that your Tooling instance is running properly. or else this feature won't be available.
+    * Go in window >> preferences >> Search Tooling >> Below status,if it is not running then click on restart studio
+    * Now your tooling services will start, which will give you preview options in your transfrom message whenever you write.
+      * Preview option is there in side up right hand side, click on it. and you can see the preview of your code.
+  * This is online Dataweave Palyground feature - You can learn from here.
+    * https://dataweave.mulesoft.com/learn/dataweave
+
+* Hands-one
+  * Simple video code of preview as mentioned above
+
 ##### 5. TRANSFORMING ONE DATA TYPE TO OTHER
+* Understanding object and Arrays
+  * How to Identify an Object and an Array?
+  * An Object is always enclosed with {} and contains key-value pair.
+  * Eg:
+    * {"name" : "Sravan"}                => Correct Way
+    * {"name" : "Sravan" , "id" : "2" }  => Correct Way
+    * {"Sravan"}                         => InCorrect
+    * {"name" : "Sravan" , "2" }
+  * An Array is always enclosed with [] and contains only values
+  * Eg:
+    * ["Sravan", "2", "Mulesoft"]     => Correct way
+    * {"name" : ["Sravan", "Lingam"]}  => InCorrect
+    * ["name" : "Sravan"]             => InCorrect
+    * ["hello" , {"name" : "vicky"} ] => Correct way
+  * Tool website where you check the correct json syntax
+    * https://jsonlint.com/
+    * Here you can check whether a data is valid or not. A json is valid or not here you can check.
 
+* Transforming one data type to other
+  * In Mule 3, we have separate connectors to convert from one type to other.
+  * In Mule 4 we use DataWeave to achieve this.
+  * Eg: 
+    * JSON to XML
+    * XML to JSON
+    * JSON to CSV
+    * And many more....
+  * Here you can see example of converting from json to xml (In video)
+    * https://jsonlint.com/
 
+* Hands On - Converting JSON post you put to XML from Transform Message: 
+  * Just add this in Transform message (DataWeave syntax to convert json to xml) : (Rest see in video code for converting Json to xml and vice versa using dataweave project) 
+    * %dw 2.0
+    * output application/xml
+    * ---
+    * details : payload
+  * Or you can add code in this way
+    * %dw 2.0
+    * output application/xml
+    * ---
+    * {details : payload}
+  * This above code will convert the JSON object to XML. This is DataWeave Syntax above
+    * {
+      "message": "Hello world!"   ,
+      "name" :   "yik"
+      }
+  * to 
+    * <?xml version='1.0' encoding='UTF-8'?>
+     *   <details>
+      *    <message>Hello world!<message></message>
+      *    <name>yik</name>
+      * </details>
+        
+* Now we will have input as xml and output as json    
+  * Then add below dataweave code in Transform message. In postman add xml type post data, 
+  * It will give output as json data for that posted
+    * %dw 2.0
+    * output application/json
+    * ---
+    *  payload
+
+### VIDEO 9 - 57 mins (Dataweave Part 2) (https://www.youtube.com/watch?v=Kch-Tks3QP4&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=9&ab_channel=SalesforceApexHours)
+#### AGENDA
+ 
