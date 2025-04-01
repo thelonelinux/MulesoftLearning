@@ -1,5 +1,8 @@
 # MulesoftLearning
 * Mulesoft Technology Learning and Stuffs
+* Other Mulesoft Learning suggested by Vishaksha
+  * TechZone :  https://www.youtube.com/playlist?list=PL61bQcdxsK6_1tb0BbAtAOX_SdtvgQlxV
+  * Developer Guide : https://www.youtube.com/playlist?list=PL2LUDEomJp_jNB4v-rFn6GmpbOZqkhIlR
 
 
 ## MY LEARNING (YOUTUBE IN DETAILED LEARNING)
@@ -753,5 +756,44 @@
     *  payload
 
 ### VIDEO 9 - 57 mins (Dataweave Part 2) (https://www.youtube.com/watch?v=Kch-Tks3QP4&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=9&ab_channel=SalesforceApexHours)
+Dataleave is basically a Mulesoft expression language. It is mainly used for accessing and transforming the data receivd through a Mule application.
+* Do mostly hands-on only learn by code only to transform in Dataleave Transform message connector
+* this is mosity coding practise and not much of theory. Do mostly code practise only.
+* Map and Mapobject syntax learning only.
+* For detailed syntax notes check : Tutorials Point Mule soft, Can learn from there rather than making notes here, here only do that much code notes only in hands-on
+####  AGENDA
+* MAP AND MAPOBJECT
+  * map operator is ued on Arrays.
+  * mapobject is used for Objects.
+  * You cannot use mapobject operator for Arrays.
+  * You cannot use map operator for objects.
+  * $: gives the value of the particular field/key.
+* HANDS-ON
+  * See all in video and do coding syntax
+
+### VIDEO 10 - 41 mins (Mostly do in code practise only - Dataweave Syntax Learning Part 2)  (https://www.youtube.com/watch?v=GB7wu1lokmg&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=11&ab_channel=SalesforceApexHours)
+* You can learn from online documentation of mulesoft. Search Dataweave2.0, You can see this in video and learn
+* MapObjet Mule: search this also you can check. Main website is mulsfot one only, there only all are there syntaxes.
 #### AGENDA
+* CONTINUE WITH DATAWEAVE SYNTAX LANGUAGE
+* Map and Mapobject
+* Reduce and Flatten
+* Cannot coerce errors
+* Reduce
+* Flatten
+* groupBy
+* DistinctBy
+* Custom functions
+* Define local variables
+* There are many more Dataweave syntax to learn (Mostly practise on DataWeave playground and in code we were using in Transform Messgae connector)
+
+### VIDEO 11 - 59 mins (Developing APIs) (https://www.youtube.com/watch?v=gbgb0axNZFs&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=12&ab_channel=SalesforceApexHours)
+* Some theory also to learn v ###*# AGENDA
+##### Recap of Previous Session
+v ##### Things to remember when connecting to external systems
+* External Systems: Database, Salesforce, SFTP, any external Mebservices etc,
+* Gather the configuration details that are required to connect to that particular system.
+* See what is the request that particual system is accepting
+* See what is the security that is required to connect to that system, v ##### HTTP Request (External System)
+* Http Reqeust is use to call other web-services
  
