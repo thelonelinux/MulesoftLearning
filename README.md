@@ -787,13 +787,125 @@ Dataleave is basically a Mulesoft expression language. It is mainly used for acc
 * Define local variables
 * There are many more Dataweave syntax to learn (Mostly practise on DataWeave playground and in code we were using in Transform Messgae connector)
 
-### VIDEO 11 - 59 mins (Developing APIs) (https://www.youtube.com/watch?v=gbgb0axNZFs&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=12&ab_channel=SalesforceApexHours)
-* Some theory also to learn v ###*# AGENDA
+### VIDEO 11 - 59 mins (Developing APIs - External Web APIs) (https://www.youtube.com/watch?v=gbgb0axNZFs&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=12&ab_channel=SalesforceApexHours)
+* Some theory also to learn 
+* Connecting wiht external system. like external weather web api and using in our project
+* #### AGENDA
 ##### Recap of Previous Session
 v ##### Things to remember when connecting to external systems
 * External Systems: Database, Salesforce, SFTP, any external Mebservices etc,
 * Gather the configuration details that are required to connect to that particular system.
-* See what is the request that particual system is accepting
-* See what is the security that is required to connect to that system, v ##### HTTP Request (External System)
-* Http Reqeust is use to call other web-services
+* See what is the request that particular system is accepting
+* See what is the security that is required to connect to that system, 
+
+##### HTTP Request (External System)
+* Http Request is use to call other web-services
+* It can be placed only in "process" are of flow/private-flow/sub-flow.
+* We should make sure that we send all kind of proper inputs to Http Request Component like URL, method, and the input payload that the external web-service
+  * is expecting, various attributes like queryparams, headers, etc
+* Mandatory Config Details required :
+  * Protocol
+  * Method
+  * URL or Path: If you provide whole URL, then port base path are not required. But if you give path, then host, port, path are necessary.
+* You can pass body, headers, Attributes, Quey Params in respective tabs
+
+* HANDS-ON
+  * Sign on weatherstack.com (signup in this free api, get key and work with it). Check in video
+  * Here we take city name and return the weather, so this is how we can use our apis by using variable and transform message.
+  * Use of Request connector in Process.
+* If you are passing parameter city name - gangtok, and this city is not present in weather api, then that time it will give error. so how to handle this.
+* For such scenario we have Choice Router.
+* CHOICE (A Connector only)
+  * Only one of one routes in the choice router executes, meaning that the first expression that evaluates to true triggers that route's execution
+  * and the others are not checked
+  * If none of the expressions are true, then it goes to default route.
+
+##### Choice connector
+* We will add this in Process. There we will do if else for location found to handle the error.
+* Check in video for more better details with code.
+
+##### Scatter-Gather connector (Mostly used in case multiple city names passed in params, or where multiple id and name is pass in query params)
+* SCATTER-GATHER
+  * Scatter Gather sends the request message to multiple target concurrently, it collects responses from various targets and aggregate them to single message.
+  * It executes routes concurrently instead of sequentially. But wait till all targets executes.
+  * Output payload is combination of all targets. And each target output has payload+attributes.
+  * So its always best practise to wrap every target within Try-Block with On-Error-Continue , So that you can handle the errors and complete the process successfully.
+  * Remember : If any of the targets fail inside scatter-gather, it will fail whole process.
+  * The total time taken to process all targets is the max time took by one of the targets.
+
+* HANDS-ON
+  * Check on video and make project and practise.
+
+###  VIDEO 12 - 54 mins (Developing APIs - Database) (https://www.youtube.com/watch?v=6fkoq5c6U7s&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=12&ab_channel=SalesforceApexHours)
+* Here we use external system called Database.
+#### AGENDA
+##### Recap of Previous session
+
+##### Validation
+* Validation Connector
+  * Validation component will verify the content of message whether it matches the specified criteria
+  * It will proceed to further connector if the conditions are matched. Else, it will raise an error.
+  * there are multiple validator connector like 
+    * IsNull
+    * IsNumber etc.
+* To check whether it is a number or something we do using this connector.
+  * Learn more in video and code practise only.
+
+##### Database
+* Things to do
+  * Install Database (my sql is easy to install on local) on local
+  * Link to install and yt see in video 
+  * Create Salesforce developer accounts (free trial)
+  * Do something beyond than what we learned in this session
+  * Practice Practice Practise
+
+* Things to remember when you want to connect to external systems:
+  * Check in above video, there only mentioned.
+
+* Database Connector
+  * Mandatory Config Details required:
+    * Driver, Host, Port, User, Password, Database/ServiceName/Instance, SQL Query text
+  * Default : empty but you can't keep empty expression, it will not deploy your application.
+  * Remember : In Mule 3, we used to have one Database connector and we will be selecting the kind of operation that we want. 
+    * Like Select, update, delete, insert etc
+  * But in Mule 4, we have separate connectors for each operation.
+  * You can test connection if you want to check if connection is successful
+  * The output type of Select statement results in "Array".
+  * If Database Select doesn't return any rows, we receive an Empty Array instead of null payload.
+
+* Hands-on
+  * In java we have to write a lot of line of code to do sql queries. But in mulesoft we don't have to do that much.
+    * In Mule we just have to drag and drop the tools.
+  * Use MySQL WorkBench Ide to use MySql server DBs.
+
+* Database >> Select Connector
+  * In it's configuration add host, port, Db etc.
+  * Generic connection or mySQL connection select and do the needful
+  * Rest see in video only.
+  * Query write in configuration only
+
+* Database >> Insert Connector
+  * See in video only and practise
+  * Query check in video only.
+  * We do both way, Hardcoded insert values in configuration.
+  * Now we do put from Query Params only as JSON input in api call.
+
+* CREATE ACCOUNT IN SALESFORCE
+  * Make account in developer.salesforce.com and make account there. We will use this as External sources in next video
+  * Try for free. for 30 days free trial.
+  * Login or signup. This is website tool only. Nothing to download.
+  * We will see more about this in next session.
+
+### VIDEO 13 - 55 min (Salesforce Integration using Mulesoft Part 1) (https://www.youtube.com/watch?v=DbsODt9VzLQ&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=13&ab_channel=SalesforceApexHours)
+#### AGENDA
+
+
+
+
+
+
+
+
+
+
  
