@@ -4,6 +4,8 @@
   * TechZone :  https://www.youtube.com/playlist?list=PL61bQcdxsK6_1tb0BbAtAOX_SdtvgQlxV
   * Developer Guide : https://www.youtube.com/playlist?list=PL2LUDEomJp_jNB4v-rFn6GmpbOZqkhIlR
 
+## JUST TOP UP LEARNING
+* https://stackoverflow.com/questions/25074017/java-version-and-javac-version-showing-different-versions#:~:text=Go%20to%20Environment%20Variables%20in,value%20to%20%22Path%22%20variable.
 
 ## MY LEARNING (YOUTUBE IN DETAILED LEARNING)
 * Playlist of Youtube : https://www.youtube.com/watch?v=-apN1Pa1QFk&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=2&ab_channel=SalesforceApexHours
