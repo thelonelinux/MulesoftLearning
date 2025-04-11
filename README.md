@@ -898,6 +898,56 @@ v ##### Things to remember when connecting to external systems
 
 ### VIDEO 13 - 55 min (Salesforce Integration using Mulesoft Part 1) (https://www.youtube.com/watch?v=DbsODt9VzLQ&list=PLaGX-30v1lh0YPFM-RU7ddYcFNiFLj-ab&index=13&ab_channel=SalesforceApexHours)
 #### AGENDA
+##### Recap of Previous session
+* Things to remember when you want to connect external systems:
+  * Check from previous videos only. same thing only.
+
+
+##### Salesforce Integration
+* Salesforce connector
+  * Sub-modules - there are many connectors within it for different operations.
+  * like create batch, create job etc.
+  * Mandatory Config Details required:
+    * Username, Password, Security token, Auth Url
+  * Default : empty but you can't keep empty expression, it will not deploy your application.
+  * It does not deal with Json or xml, here we are accepting Java
+  * Remember : Before choosing any operation, please check what is the type of request that particular operation is accepting. Its very important.
+  * But in Mule 4, we have separate connectors for each operation.
+  * You can test connection if you want to check if connection is successful
+  * In Mule 4, we have separate connectors for each operation.
+
+* Hands-on
+  * Goto developer.salesforce.com
+  * We can't do all the salesforce connectors, but we will see few of the connectors.
+  * Do Salesforce configuration. Check in video only.
+  * Generate security token and test the conection.
+
+##### "Create" operation (Connector)
+
+##### "On Modified Object" (Connector)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
