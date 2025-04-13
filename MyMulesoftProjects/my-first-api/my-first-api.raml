@@ -1,0 +1,114 @@
+#%RAML 1.0
+title: my-first-api
+
+# --Creating normal APIs -------------
+
+#GET API (How to create a simple static get API)
+/getAccountSummary:
+  description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details here"
+  get:
+    queryParameters:
+      accountNumber:
+        type: number
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+              "BankAccountNumber" : 1345,
+              "Name" : "Vicky",
+              "Country" : "India"
+             }
+
+# POST API - How to create a simple POST API
+/createAccounts:
+  description: "To create a new account, Here just pass branch, It will just do the rest"
+  post:
+    queryParameters:
+      branch: string
+    body:
+      application/json:
+        example:
+          {
+            "name" : "vicky",
+            "DOB" : "21-01-2000"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Account created"
+              }
+
+
+
+# ----------- TRAITS ---------------------
+
+traits:
+  typeOfVerification: 
+    queryParameters:
+          username : string 
+          password : string
+  
+
+# We will pass this trait in getAccountSummary API using is keyword
+# We will just create other similar api to preserve our orignial and just to show you how it changes
+#GET API (How to create a simple static get API)
+/getAccountSummaryWithTraits:
+  description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details here"
+  get:
+    queryParameters:
+      accountNumber:
+        type: number
+    is:       #We define trait using "is" syntax, Because your trait is also a type of query parameter so write "is" in indentation with query parameter. Also trait can be also of other type of like body and etc.
+      typeOfVerification
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+              "BankAccountNumber" : 1345,
+              "Name" : "Vicky",
+              "Country" : "India"
+             }
+
+# Using trait in other api as well in post one
+/createAccountsWithTrait:
+  description: "To create a new account, Here just pass branch, It will just do the rest"
+  post:
+    queryParameters:
+      branch: string
+    is: #Here also this will just add additional query params of username and password as defined in it's traits
+      - typeOfVerification
+    body:
+      application/json:
+        example:
+          {
+            "name" : "vicky",
+            "DOB" : "21-01-2000"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Account created"
+              }
+
+#----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+      

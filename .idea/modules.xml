@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MulesoftLearning.iml" filepath="$PROJECT_DIR$/.idea/MulesoftLearning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Images_Mulesoft/src.iml" filepath="$PROJECT_DIR$/Images_Mulesoft/src.iml" />
     </modules>
   </component>
 </project>

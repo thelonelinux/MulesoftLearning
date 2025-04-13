@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+
+# JSON for enum how to use
+type: object
+properties:
+  accountNumber : number 
+  address : array
+  items:
+    properties:
+      typeOdAddress : 
+        type : string
+        enum:             # So here we will have only two type of address.
+          - "home"
+          - "work"
+      city : 
+        type : string
+        minLength: 3   # you can also put constraints like this in your json
+        maxLength: 10
+      zip : 
+        type : number
+        minimum: 0000
+        maximum: 9999
+
+
+
+# Now once you have created this JSON object, we need to use this in our api.

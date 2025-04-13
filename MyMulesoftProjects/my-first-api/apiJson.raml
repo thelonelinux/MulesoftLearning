@@ -1,0 +1,58 @@
+#%RAML 1.0
+title: apiJson
+
+# --Creating normal APIs (Here we will use JSON which we have created-------------
+
+traits:
+  typeOfVerification2: 
+    queryParameters:
+          username : string 
+          password : string
+          <<typeOfOtp>>: string
+  
+
+
+#GET API (How to create a simple static get API)
+#you will pass json as this way using !include keyword. So now when you see you will see all the details example in console.
+/getAccountSummaryWithVariableTraits:
+  description: "Use of our json file as response"
+  get:
+    queryParameters:
+      accountNumber:
+        type: number
+    is:       
+      - {typeOfVerification2 : {typeOfOtp : mobileOtp}}
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include createAccountRequest2.raml   #here you see
+            example: !include exampleRequestJson.raml   #here you add your example
+
+
+
+# Using trait in other api as well in post one
+/createAccountsWithVariableTrait:
+  description: "use of our json file as response "
+  post:
+    queryParameters:
+      branch: string
+    is: 
+      - {typeOfVerification2 : {typeOfOtp : emailOtp}}
+    body:
+      application/json:
+        example:
+          {
+            "name" : "vicky",
+            "DOB" : "21-01-2000"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Account created"
+              }
+
+#----------------------------------------------

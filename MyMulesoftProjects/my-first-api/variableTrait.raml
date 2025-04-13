@@ -1,0 +1,66 @@
+#%RAML 1.0
+title: variableTrait
+
+## In case we have traits with 2 common params, username and password,
+##but we want one more para a variable param, to be used as different name 
+## in two different apis then we have this
+
+# ----------- TRAITS ---------------------
+# Remember we can't have two traits: block in same file, so making in separate file here
+traits:
+  typeOfVerification2: 
+    queryParameters:
+          username : string 
+          password : string
+          <<typeOfOtp>>: string
+  
+
+# We will pass this trait in getAccountSummary API using is keyword
+# We will just create other similar api to preserve our orignial and just to show you how it changes
+#GET API (How to create a simple static get API)
+/getAccountSummaryWithVariableTraits:
+  description: "To get static bank account details of a customer with accountNumber as random input - you will get same one account details here"
+  get:
+    queryParameters:
+      accountNumber:
+        type: number
+    is:       #We define trait using "is" syntax, Because your trait is also a type of query parameter so write "is" in indentation with query parameter. Also trait can be also of other type of like body and etc.
+      - {typeOfVerification2 : {typeOfOtp : mobileOtp}}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+              "BankAccountNumber" : 1345,
+              "Name" : "Vicky",
+              "Country" : "India"
+             }
+
+# Using trait in other api as well in post one
+/createAccountsWithVariableTrait:
+  description: "To create a new account, Here just pass branch, It will just do the rest"
+  post:
+    queryParameters:
+      branch: string
+    is: #Here also this will just add additional query params of username and password as defined in it's traits
+      - {typeOfVerification2 : {typeOfOtp : emailOtp}}
+    body:
+      application/json:
+        example:
+          {
+            "name" : "vicky",
+            "DOB" : "21-01-2000"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Account created"
+              }
+
+#----------------------------------------------
+
+# ------------------------------------------
