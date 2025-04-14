@@ -3,6 +3,13 @@
 * Other Mulesoft Learning suggested by Vishaksha
   * TechZone :  https://www.youtube.com/playlist?list=PL61bQcdxsK6_1tb0BbAtAOX_SdtvgQlxV
   * Developer Guide : https://www.youtube.com/playlist?list=PL2LUDEomJp_jNB4v-rFn6GmpbOZqkhIlR
+* Other Important Links
+  * 1. Dataweave playground : https://dataweave.mulesoft.com/learn/dataweave
+    * This converts json to raml and so on.
+  * 2. Salesforce login to deploy your apis
+    * https://orgfarm-908c796dd1-dev-ed.develop.my.salesforce.com/?ec=301&startURL=%2Fvisualforce%2Fsession%3Furl%3Dhttps%253A%252F%252Forgfarm-908c796dd1-dev-ed.develop.lightning.force.com%252Flightning%252Fn%252FWelcome
+  * 3. Online Mulesoft Anypoint Platform : https://anypoint.mulesoft.com/login/
+    * Login with your ide
 
 ## JUST TOP UP LEARNING
 * https://stackoverflow.com/questions/25074017/java-version-and-javac-version-showing-different-versions#:~:text=Go%20to%20Environment%20Variables%20in,value%20to%20%22Path%22%20variable.
@@ -927,6 +934,14 @@ v ##### Things to remember when connecting to external systems
 ##### "Create" operation (Connector)
 
 ##### "On Modified Object" (Connector)
+
+
+### VIDEO 14,15,16,17,18 (UPDATES - FOR NOW SKIPPING THIS AS STARTED WITH OFFICE WORK IN MULESOFT)
+* Also this topics of salesforce integration is video 14 is not used in our bank as well.
+* Rest of the videos we will see in future as it comes forwards.
+* Like error handling, developing api, managing and deploying apis.
+* for now we will focus what all topics are used in our bank and learn that only for now.
+* CHECK FILE "EXTRA_URGENT_LEARNING" TO SEE WHICH ALL TOPICS NEED TO BE COVERED URGENTLY. AS THESE ARE USED IN BANKS AND NEED TO BE COVERED.
 
 
 
