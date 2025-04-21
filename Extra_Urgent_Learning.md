@@ -15,6 +15,8 @@
 * https://www.youtube.com/watch?v=esjJf4TXJCs&ab_channel=sivathankamanee%28siva.thankamanee%29
 * This is just some add api we are dealing with by passing the a and b in json input, and output is asserted using assert mullet tool.
 * Here we are just mocking the json test data.
+#### MUNIT TESTING WITH MUNIT AND EVENT PALLETES LEARNING
+* https://www.youtube.com/watch?v=PYOBr3I2rk0&ab_channel=ProstDev
 
 
 ### 2. START LEARNING FROM PLAYLIST 35 (THIS CONTAINS RAML WAY OF MAKING API AND USE OF POM.XML AND USE OF MULTI XML FILE FOR FLOW AND MUNIT)
