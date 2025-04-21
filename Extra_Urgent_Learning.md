@@ -17,6 +17,12 @@
 * Here we are just mocking the json test data.
 #### MUNIT TESTING WITH MUNIT AND EVENT PALLETES LEARNING
 * https://www.youtube.com/watch?v=PYOBr3I2rk0&ab_channel=ProstDev
+* Some good points
+
+* https://www.youtube.com/watch?v=on7uQpWXV1E&list=PLS7TX-Td7cfng5x4URVnHGdRPScSbNFaH&ab_channel=RightCode
+* Complete Playlist
+
+* https://www.youtube.com/watch?v=FVu1QMWgnp8&ab_channel=ZeroToSiva
 
 
 ### 2. START LEARNING FROM PLAYLIST 35 (THIS CONTAINS RAML WAY OF MAKING API AND USE OF POM.XML AND USE OF MULTI XML FILE FOR FLOW AND MUNIT)
