@@ -25,5 +25,9 @@
 * https://www.youtube.com/watch?v=FVu1QMWgnp8&ab_channel=ZeroToSiva
 
 
+#### MUNIT LEARNING AS PER MY BOFA MUNIT TEST CREATION
+* https://www.youtube.com/watch?v=o_8IJ2e31Aw&list=PLt74Wn6k8TfDtd8LN3H1-59sslgtdkGt8&ab_channel=IntegrationWorld
+
+
 ### 2. START LEARNING FROM PLAYLIST 35 (THIS CONTAINS RAML WAY OF MAKING API AND USE OF POM.XML AND USE OF MULTI XML FILE FOR FLOW AND MUNIT)
 * https://www.youtube.com/watch?v=zZUtdFsLcIk&list=PL2LUDEomJp_jNB4v-rFn6GmpbOZqkhIlR&index=35&ab_channel=DevelopersGuide
